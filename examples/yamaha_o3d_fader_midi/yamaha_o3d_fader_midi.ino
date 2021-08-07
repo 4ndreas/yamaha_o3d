@@ -1,7 +1,16 @@
 /*
-* This is used with a maple mini and Rogers STM32 Arduino Core, since the stm32core does not support composite USB midi devices etc.
-*
-*/
+ *
+ * Runs on Rogers Core by stm32duino
+ * board manager Link:
+ * http://dan.drown.org/stm32duino/package_STM32duino_index.json
+ * 
+ * STM32F1xx/GDF1xx boards
+ * 2020.6.7
+ *
+ * This is used with a maple mini and Rogers STM32 Arduino Core, since the stm32core does not support composite USB midi devices etc.
+ *
+ */
+
 
 #include "yamaha_o3d.h"
 #include <USBComposite.h>
