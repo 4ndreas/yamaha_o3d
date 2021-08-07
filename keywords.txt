@@ -1,0 +1,40 @@
+#######################################
+# Syntax Coloring Map for yamaha_o3d
+#######################################
+
+
+#######################################
+# Datatypes (KEYWORD1)
+#######################################
+
+
+
+#######################################
+# Methods and Functions (KEYWORD2)
+#######################################
+
+
+begin	KEYWORD2
+
+faderWorker	KEYWORD2
+timerWorker	KEYWORD2
+getMidiFader	KEYWORD2
+getFaderRAW	KEYWORD2
+getFader	KEYWORD2
+moveFader	KEYWORD2
+
+setLED      KEYWORD2
+getButton   KEYWORD2
+
+#######################################
+# Instances (KEYWORD2)
+#######################################
+
+
+YamahaFader	 KEYWORD2
+YamahaKeypad KEYWORD2
+
+#######################################
+# Constants (LITERAL1)
+#######################################
+
