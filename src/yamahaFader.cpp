@@ -105,6 +105,10 @@ int YamahaFader::getMidiFader(unsigned int number, int * MSB, int * LSB)
   int sfader = 0;
   int ret = getFader(number, &sfader);
 
+  if (motorMoving > 0)
+  {
+    return 0;
+  }
 
 //  *MSB = sfader >>5;
 //  *LSB = ((sfader & 0x1F) << 2 | (sfader >>10));
@@ -172,9 +176,11 @@ void YamahaFader::setMotor(int number, int speed, int enable)
   if(enable  ==0)  // disable
   {
     setMotorBuffer(number, 0,0);
+    motorMoving = 0;
   }
   else
   {
+    motorMoving = 1;
     if(speed < 0)
     {
       setMotorBuffer(number, pwm,0);
@@ -188,6 +194,20 @@ void YamahaFader::setMotor(int number, int speed, int enable)
       setMotorBuffer(number, PWM_MAX,PWM_MAX);
     }
   }
+}
+void YamahaFader::setTargetLow(unsigned int number, int targetLow)
+{
+  motorTargetLow[number] = constrain(targetLow,0,4096);
+}
+
+void YamahaFader::setTargetHigh(unsigned int number, int targetHigh)
+{
+  motorTargetHigh[number] = constrain(targetHigh,0,4096);
+}
+void YamahaFader::moveFader(unsigned int number)
+{ 
+  int target =  motorTargetHigh[number]<<5 +  motorTargetLow[number];
+  moveFader(number, target);
 }
 
 void YamahaFader::moveFader(unsigned int number, int target)

@@ -61,8 +61,10 @@ class YamahaFader
     int getMidiFader(unsigned int number, int * MSB, int * LSB);
 
     // Motors
+    void moveFader(unsigned int number);
     void moveFader(unsigned int number, int target);
-
+    void setTargetLow(unsigned int number, int targetLow);
+    void setTargetHigh(unsigned int number, int targetHigh);
  
   private:
     // Fader functions
@@ -78,7 +80,7 @@ class YamahaFader
 
     // Private Variables
     int pwmCounter;
-    
+    int motorMoving = 0;
     int fader_raw_A = 0;
     int fader_raw_B = 0;
     int fader_raw_C = 0;
@@ -95,6 +97,8 @@ class YamahaFader
     uint8_t motorMoveing[MOTOR_FADER_NUM];
     uint32_t motorStart[MOTOR_FADER_NUM];
     uint32_t motorTarget[MOTOR_FADER_NUM];
+    uint32_t motorTargetLow[MOTOR_FADER_NUM];
+    uint32_t motorTargetHigh[MOTOR_FADER_NUM];
 };
 
 

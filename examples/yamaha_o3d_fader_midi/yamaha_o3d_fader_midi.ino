@@ -28,7 +28,15 @@ class myMidi : public USBMIDI {
  virtual void handleControlChange(unsigned int channel, unsigned int controller, unsigned int value) {
     if(channel == 1)
     {
-      yfader.moveFader(controller, value*32 );
+      if((controller % 2 ) == 0)
+      {
+        yfader.setTargetHigh(controller/2, value);
+      }
+      else
+      {
+        yfader.setTargetLow((controller-1)/2, value);
+        yfader.moveFader((controller-1)/2);
+      }
     }
   }
 };
